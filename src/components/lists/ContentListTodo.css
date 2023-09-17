@@ -1,0 +1,107 @@
+.aside-content-todo {
+    margin-top: 20px;
+}
+
+.aside-todo-list {
+    display: flex;
+    background: #DE7D3B;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.checkbox-todo {
+    display: flex;
+    position: relative;
+}
+
+.count__todo {
+    font-family: "Roboto Black";
+    position: absolute;
+    font-size: 12px;
+    top: -5px;
+    left: -5px;
+}
+
+.label__todo {
+    display: flex;
+    background: #015042;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: all .5s;
+}
+
+.label__todo:before {
+    content: '';
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #DE7D3B;
+    left: 3px;
+    top: 3px;
+    transition: all .5s;
+}
+
+.label__todo:after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    left: 6px;
+    top: 6px;
+    transition: all .5s;
+}
+
+.check__input {
+    display: none;
+}
+
+.check__input:checked + .label__todo:after {
+    background: #015042;
+}
+
+.aside-text-content-todo {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__text__todo {
+    font-family: "Roboto Black";
+    font-size: 20px;
+}
+
+.text__todo {
+    font-family: "Roboto Light";
+    transition: all .3s;
+    /*text-decoration: line-through;*/
+}
+
+.text_decoration {
+    text-decoration: line-through;
+    color: #525252;
+}
+
+.check__wishlist {
+    display: none;
+}
+
+.label__wishlist {
+    cursor: pointer;
+    font-size: 40px;
+    transition: all .3s;
+    color: black;
+}
+
+.label__wishlist:hover {
+    color: #d9283d;
+}
+

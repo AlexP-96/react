@@ -1,0 +1,10 @@
+.aside-header {
+    display: flex;
+    justify-content: center;
+}
+
+.title-todo {
+    font-family: "Roboto Black";
+    font-size: 30px;
+    margin: 0 auto;
+}

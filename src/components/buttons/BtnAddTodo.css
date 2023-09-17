@@ -1,0 +1,18 @@
+.btn__add__todo {
+    width: 100%;
+    background: #864c1d;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    /*padding: 10px;*/
+    font-size: 50px;
+    color: white;
+    transition: all .3s;
+}
+.btn__add__todo:hover {
+    background: #cb9131;
+    color: black;
+}
+.aside-add-todo {
+    margin-top: 20px;
+}
