@@ -4,14 +4,25 @@ import HeaderToDo from "./components/header/HeaderToDo";
 import DateTodo from "./components/date/DateTodo";
 import ContentListTodo from "./components/lists/ContentListTodo";
 import BtnAddTodo from "./components/buttons/BtnAddTodo";
+import {useDispatch, useSelector} from "react-redux";
+import {addTodo} from "./actions/actions";
 
 import './null.css';
-
 import './App.css';
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
+const dataSelector = (state) => state.dataTodo;
 
 function App() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({type: 'SHOW_DATA'})
+    }, [])
+
+    const dataToDo = useSelector(dataSelector);
 
     //получение локальных туду
     let localData = JSON.parse(localStorage.getItem('todoList'));
@@ -31,24 +42,21 @@ function App() {
     const [showWarning, setShowWarning] = useState('none');
     //стэйт на id элемента туду для модального окна
     const [todoId, setToDoId] = useState('');
-    //стэйт на текст элемента туду для отрисовки в моадльном окне предупреждения
-    const [textTodo, setTextTodo] = useState('');
 
     //создание элементов туду
     const createTodo = (data) => {
 
         //создание туду листов в локальном хранилище
         localStorage.setItem('todoList', JSON.stringify(todo));
+
         return data.map((item, index) => {
             return <ContentListTodo
                 idItem={item.id}
                 text={item.text}
                 check={item.check}
                 wishlist={item.wishlist}
-                checkDelete={delListToDo}
-                openWarning={openWarning}
-                checkTodo={checkComplete}
                 countTodo={index}
+                openWarning={openModalWarning}
                 key={index}/>
         })
     }
@@ -61,32 +69,14 @@ function App() {
         setShowModal(e)
     }
     //открытие окна предупрежения
-    const openWarning = (e, id, text) => {
-        setShowWarning(e);
-        setToDoId(id);
-        setTextTodo(text)
-    }
-    //закрытие окна предупреждения
-    const closeWarning = (e) => {
+
+    const openModalWarning = (e) => {
         setShowWarning(e)
     }
 
-    //добавление новой задачи туду
-    const addToDo = (content) => {
-
-        const getDate = new Date();
-
-        let randomId = getDate.getMilliseconds() + Math.random();
-
-        const objectToDo = {
-            id: randomId, check: false, text: content, wishlist: false
-        }
-        if (content === '') {
-            alert('Поле не должно быть пустым.')
-        } else {
-            setTodo([...todo, objectToDo]);
-            setShowModal('none');
-        }
+    //закрытие окна предупреждения
+    const closeWarning = (e) => {
+        setShowWarning(e)
     }
 
     // удаление элемента из стэйта todo
@@ -97,7 +87,7 @@ function App() {
 
     // установка тру или фолс на элемент чекед
     const checkComplete = (value) => {
-        setTodo(todo.map(item => (item.id === value ? {...item, check: !item.check} : {...item})));
+        addTodo.map(item => (item.id === value ? {...item, check: !item.check} : {...item}));
     }
 
     return (<div className="App">
@@ -105,14 +95,13 @@ function App() {
             <HeaderToDo/>
             <DateTodo counttasck={todo}/>
             <div className="aside-content-todo">
-                {createTodo(todo)}
+                {createTodo(dataToDo.data)}
             </div>
 
             <BtnAddTodo showModal={openModalAddTodo}/>
             <ModalAddTodo
                 showModal={showModal}
                 closeModal={closeModal}
-                addTodo={addToDo}
             />
 
             <WarningDel
@@ -120,7 +109,6 @@ function App() {
                 closeWarning={closeWarning}
                 deleteTodo={delListToDo}
                 todoId={todoId}
-                textTodo={textTodo}
             />
         </div>
     </div>);
