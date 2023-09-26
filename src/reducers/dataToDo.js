@@ -2,15 +2,16 @@ const SHOW_DATA = 'SHOW_DATA';
 const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = 'REMOVE_TODO';
 const CHECKED_TODO = 'CHECKED_TODO';
+const GET_ID = 'GET_ID';
 
-const dataToDo = (state = {data: []}, action) => {
+const dataToDo = (state = {data: [], id: ''}, action) => {
 
     switch (action.type) {
         case SHOW_DATA:
             return {
                 ...state,
                 data: [
-                    {id: 999, check: false, text: 'Первая тестовая запись', wishlist: false}
+                    {id: '999', check: false, text: 'Первая тестовая запись', wishlist: false}
                 ]
             };
         case ADD_TODO:
@@ -21,7 +22,7 @@ const dataToDo = (state = {data: []}, action) => {
         case REMOVE_TODO:
             return {
                 ...state,
-                data: [...state.data, action.payload.filter(item => item.id !== action)]
+                data: state.data.filter(item => item.id !== action.payload)
             }
         case CHECKED_TODO:
             return {
@@ -30,7 +31,11 @@ const dataToDo = (state = {data: []}, action) => {
                     ...item,
                     check: action.payload.check
                 } : {...item}))
-
+            }
+        case GET_ID:
+            return {
+                ...state,
+                id: String(state.data.filter(item => item.id === action.payload).map(item => item.id))
             }
         default:
             return state;

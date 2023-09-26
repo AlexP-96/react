@@ -1,21 +1,20 @@
 import './ContentListTodo.css';
 
-import {checkedToDo} from "../../actions/actions";
+import {checkedToDo, getIdToDo} from "../../actions/actions";
 import {useDispatch} from "react-redux";
 
 const ContentListTodo = ({idItem, text, check, wishlist, countTodo, openWarning}) => {
 
     const dispatch = useDispatch();
 
+    //клик по задаче для перевода задачи в состояние тру или фолс
     const checkedTodoDispatch = (e) => {
-
-        let Id = e.target.dataset.id;
-        let Check = Boolean(e.target.dataset.checked);
-        dispatch(checkedToDo(Id, Check))
+        dispatch(checkedToDo(idItem, e.target.checked))
     }
 
     const openModalDelToDo = (e) => {
         openWarning(e);
+        dispatch(getIdToDo(idItem));
     }
 
     return (<div className="aside-todo-list">
@@ -25,8 +24,9 @@ const ContentListTodo = ({idItem, text, check, wishlist, countTodo, openWarning}
                    className='check__input'
                    type='checkbox'
                    defaultChecked={check}
-                   data-checked={check}
-                   onChange={(e) => {checkedTodoDispatch(idItem, e.target.checked)}}/>
+                   checked={check}
+                   data-id={idItem}
+                   onChange={checkedTodoDispatch}/>
             <label htmlFor={'check__input__' + idItem}
                    data-id={idItem}
                    className='label__todo'

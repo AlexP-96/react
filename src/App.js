@@ -5,7 +5,6 @@ import DateTodo from "./components/date/DateTodo";
 import ContentListTodo from "./components/lists/ContentListTodo";
 import BtnAddTodo from "./components/buttons/BtnAddTodo";
 import {useDispatch, useSelector} from "react-redux";
-import {addTodo} from "./actions/actions";
 
 import './null.css';
 import './App.css';
@@ -24,31 +23,13 @@ function App() {
 
     const dataToDo = useSelector(dataSelector);
 
-    //получение локальных туду
-    let localData = JSON.parse(localStorage.getItem('todoList'));
-
-    //значение по умолчанию
-    const dataTodo = [{id: 1, check: false, text: 'Первая тестовая запись', wishlist: false}];
-
-    //проверка на наличие данных в локальном хранилище
-    if (localData === null || localData === undefined || localData.length === 0) {
-        localData = dataTodo;
-    }
-    //стэйт на отрисову тудушек
-    const [todo, setTodo] = useState(localData);
     //стей на показ модального окна
     const [showModal, setShowModal] = useState('none');
     //стэйт на показ модального окна предупреждения
     const [showWarning, setShowWarning] = useState('none');
-    //стэйт на id элемента туду для модального окна
-    const [todoId, setToDoId] = useState('');
 
     //создание элементов туду
     const createTodo = (data) => {
-
-        //создание туду листов в локальном хранилище
-        localStorage.setItem('todoList', JSON.stringify(todo));
-
         return data.map((item, index) => {
             return <ContentListTodo
                 idItem={item.id}
@@ -79,21 +60,10 @@ function App() {
         setShowWarning(e)
     }
 
-    // удаление элемента из стэйта todo
-    const delListToDo = (id) => {
-        setTodo(todo.filter(item => item.id !== id));
-        closeWarning('none');
-    }
-
-    // установка тру или фолс на элемент чекед
-    const checkComplete = (value) => {
-        addTodo.map(item => (item.id === value ? {...item, check: !item.check} : {...item}));
-    }
-
     return (<div className="App">
         <div className="container">
             <HeaderToDo/>
-            <DateTodo counttasck={todo}/>
+            <DateTodo />
             <div className="aside-content-todo">
                 {createTodo(dataToDo.data)}
             </div>
@@ -107,8 +77,6 @@ function App() {
             <WarningDel
                 showWarning={showWarning}
                 closeWarning={closeWarning}
-                deleteTodo={delListToDo}
-                todoId={todoId}
             />
         </div>
     </div>);
