@@ -1,13 +1,28 @@
-
-
+@font-face {
+    font-family: 'RussoOne';
+    src: url("../fonts/RussoOne-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Jura";
+    src: url("../fonts/Jura-Medium.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
 .App {
     display: flex;
     max-width: 600px;
     margin: 0 auto;
-    background: #DE9665;
     border-radius: 10px;
+
 }
 .container {
-    padding: 20px;
     width: 100%;
+    min-height: 600px;
+    position: relative;
+    background: #ff234f;
+}
+.header {
+    background: #030020;
 }

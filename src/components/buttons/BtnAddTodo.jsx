@@ -7,7 +7,7 @@ const BtnAddTodo = ({showModal}) => {
     return (
         <div className="aside-add-todo">
             <button className="btn__add__todo"
-                    onClick={() => showModal('block')}>+</button>
+                    onClick={() => showModal('block')}></button>
         </div>
     );
 };

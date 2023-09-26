@@ -21,13 +21,12 @@ function App() {
         dispatch({type: 'SHOW_DATA'})
     }, [])
 
-    const dataToDo = useSelector(dataSelector);
+    const dataToDo = useSelector(dataSelector).data;
 
     //стей на показ модального окна
     const [showModal, setShowModal] = useState('none');
     //стэйт на показ модального окна предупреждения
     const [showWarning, setShowWarning] = useState('none');
-
     //создание элементов туду
     const createTodo = (data) => {
         return data.map((item, index) => {
@@ -50,11 +49,9 @@ function App() {
         setShowModal(e)
     }
     //открытие окна предупрежения
-
     const openModalWarning = (e) => {
         setShowWarning(e)
     }
-
     //закрытие окна предупреждения
     const closeWarning = (e) => {
         setShowWarning(e)
@@ -62,10 +59,12 @@ function App() {
 
     return (<div className="App">
         <div className="container">
-            <HeaderToDo/>
-            <DateTodo />
+            <div className="header">
+                <DateTodo />
+                <HeaderToDo/>
+            </div>
             <div className="aside-content-todo">
-                {createTodo(dataToDo.data)}
+                {createTodo(dataToDo)}
             </div>
 
             <BtnAddTodo showModal={openModalAddTodo}/>

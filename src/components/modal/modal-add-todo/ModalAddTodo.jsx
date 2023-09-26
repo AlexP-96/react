@@ -6,16 +6,13 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addTodo} from "../../../actions/actions";
 
-
 const ModalAddTodo = ({showModal, closeModal}) => {
 
     const dispatch = useDispatch();
-
+    //стэйт для добавления вводимого текста в редуктор
     const [content, setContent] = useState('');
-
     //добавление нового поста
     const dispatchToDo = () => {
-
         if (content === '') {
             alert('Поле не должно быть пустым')
         } else {

@@ -1,18 +1,52 @@
+.aside-add-todo {
+    display: flex;
+    margin: auto;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
 .btn__add__todo {
+    position: absolute;
     width: 100%;
-    background: #864c1d;
+    height: 100%;
+    background: #030020;
     border: none;
-    border-radius: 20px;
+    border-radius: 50%;
     cursor: pointer;
-    /*padding: 10px;*/
-    font-size: 50px;
     color: white;
     transition: all .3s;
 }
-.btn__add__todo:hover {
-    background: #cb9131;
-    color: black;
+.btn__add__todo:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 30px;
+    background: white;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s;
 }
-.aside-add-todo {
-    margin-top: 20px;
+.btn__add__todo:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    background: white;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s;
+
+}
+.btn__add__todo:hover {
+    background: white;
+}
+.btn__add__todo:hover:before, .btn__add__todo:hover:after {
+    background: black;
 }

@@ -1,12 +1,8 @@
 import React from 'react';
 import './Date.css';
-import {useSelector} from "react-redux";
-
-const quantitySelector = (state) => state.dataTodo.data.length
 
 const DateTodo = () => {
 
-    const quantityToDo = useSelector(quantitySelector)
 
     const date = new Date();
 
@@ -21,9 +17,7 @@ const DateTodo = () => {
         } else {
             mount = getMount
         }
-
         return `${dayNumber}.${mount}`;
-
     }
 
 //получение года
@@ -41,12 +35,10 @@ const DateTodo = () => {
     return (<div className="aside-date">
         <div className="aside-month">
             <div className="month">{getDay()}</div>
+            <div className="day">{getDayWeek()}</div>
             <div className="year">{getYear()} год</div>
         </div>
-        <div className="aside-day">
-            <div className="day">{getDayWeek()}</div>
-            <div className="all__task">Всего задач: {quantityToDo}</div>
-        </div>
+
     </div>);
 };
 

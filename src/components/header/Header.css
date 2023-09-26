@@ -1,10 +1,23 @@
 .aside-header {
     display: flex;
+    padding-bottom: 10px;
     justify-content: center;
+    flex-direction: column;
 }
 
 .title-todo {
-    font-family: "Roboto Black";
     font-size: 30px;
     margin: 0 auto;
+    color: white;
+    font-family: RussoOne;
+
+}
+.aside-day {
+    display: flex;
+    color: #7c778a;
+    justify-content: center;
+    font-family: Jura;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
 }

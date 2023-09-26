@@ -3,8 +3,9 @@ const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = 'REMOVE_TODO';
 const CHECKED_TODO = 'CHECKED_TODO';
 const GET_ID = 'GET_ID';
+const GET_TEXT = 'GET_TEXT';
 
-const dataToDo = (state = {data: [], id: ''}, action) => {
+const dataToDo = (state = {data: [], id: '', text: ''}, action) => {
 
     switch (action.type) {
         case SHOW_DATA:
@@ -13,7 +14,7 @@ const dataToDo = (state = {data: [], id: ''}, action) => {
                 data: [
                     {id: '999', check: false, text: 'Первая тестовая запись', wishlist: false}
                 ]
-            };
+            }
         case ADD_TODO:
             return {
                 ...state,
@@ -36,6 +37,11 @@ const dataToDo = (state = {data: [], id: ''}, action) => {
             return {
                 ...state,
                 id: String(state.data.filter(item => item.id === action.payload).map(item => item.id))
+            }
+        case GET_TEXT:
+            return {
+                ...state,
+                text: String(state.data.filter(item => item.text === action.payload).map(item => item.text))
             }
         default:
             return state;

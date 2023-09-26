@@ -1,33 +1,17 @@
 .aside-date {
-    font-family: "Roboto Black";
-    background: #015042;
+    font-family: Jura;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 800;
 }
 
 .aside-month {
     display: flex;
     justify-content: space-between;
+     color: #7c778a;
 }
 
-.aside-day {
-    display: flex;
-    color: white;
-    justify-content: space-between;
-}
 
-.month {
-    color: #55BBAA;
-    font-size: 25px;
-}
-
-.year {
-    color: #55BBAA;
-}
-.all__task {
-    /*font-size: 20px;*/
-}

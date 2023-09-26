@@ -1,14 +1,12 @@
 .aside-content-todo {
-    margin-top: 20px;
 }
 
 .aside-todo-list {
     display: flex;
-    background: #DE7D3B;
-    padding: 10px;
-    border-radius: 10px;
+    background: #ff234f;
+    padding: 20px;
     justify-content: space-between;
-    margin-top: 10px;
+    transition: all .5s;
 }
 
 .checkbox-todo {
@@ -17,7 +15,6 @@
 }
 
 .count__todo {
-    font-family: "Roboto Black";
     position: absolute;
     font-size: 12px;
     top: -5px;
@@ -26,7 +23,7 @@
 
 .label__todo {
     display: flex;
-    background: #015042;
+    background: #030020;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -41,7 +38,7 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #DE7D3B;
+    background: #ff234f;
     left: 3px;
     top: 3px;
     transition: all .5s;
@@ -64,7 +61,7 @@
 }
 
 .check__input:checked + .label__todo:after {
-    background: #015042;
+    background: #030020;
 }
 
 .aside-text-content-todo {
@@ -75,14 +72,14 @@
 }
 
 .header__text__todo {
-    font-family: "Roboto Black";
+    font-family: Jura;
     font-size: 20px;
 }
 
 .text__todo {
-    font-family: "Roboto Light";
+    font-family: Jura;
     transition: all .3s;
-    /*text-decoration: line-through;*/
+    color: white;
 }
 
 .text_decoration {
@@ -93,15 +90,46 @@
 .check__wishlist {
     display: none;
 }
-
+.aside-todo-wishlist {
+}
 .label__wishlist {
+    position: relative;
+    display: block;
+    right: 0;
     cursor: pointer;
     font-size: 40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ff4d70;
     transition: all .3s;
     color: black;
+    transform: rotate(45deg);
+}
+.label__wishlist:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    background: #f54364;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.label__wishlist:before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: #f54364;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .label__wishlist:hover {
-    color: #d9283d;
+    background: #ba001f;
 }
 
