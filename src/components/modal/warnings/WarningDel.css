@@ -21,15 +21,15 @@
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    border-radius: 20px;
-    background: #e07d38;
+    background: #030020;
 }
 .text-warning {
-    font-family: Roboto;
+    font-family: Jura;
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
+    color: #7c778a;
 }
 
 .changed_text_del {
@@ -39,9 +39,10 @@
     display: inline;
 }
 .aside-text-warning-del {
-    font-family: "Roboto Black";
+    font-family: RussoOne;
     font-size: 25px;
     text-align: center;
+    color: white;
 }
 .aside-btn-warning-del {
     margin-top: 20px;
@@ -51,12 +52,16 @@
 .warn-del-yes,
 .warn-del-no {
     padding: 10px 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
-    font-family: Roboto;
+    font-family: RussoOne;
     transition: all .3s;
     border: none;
+}
+.warn-del-yes {
+    background: #ff234f;
+    color: white;
 }
 .warn-del-yes:hover,
 .warn-del-no:hover {

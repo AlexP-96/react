@@ -37,14 +37,19 @@ const ModalAddTodo = ({showModal, closeModal}) => {
                         className='textarea__todo__add'
                         onChange={getContentTodo}
                         value={content}></textarea>
-                <input
-                    className="btn__add__todo__modal"
-                    type='button'
-                    onClick={dispatchToDo}
-                    value='Добавить'/>
-                <div className="close__add__todo"
-                     onClick={() => closeModal('none')}>✕
+                <div className="aside-btn-add-todo">
+                    <input
+                        className="btn__add__todo__modal btn_cancel"
+                        type='button'
+                        value='Отмена'
+                        onClick={() => closeModal('none')}/>
+                    <input
+                        className="btn__add__todo__modal"
+                        type='button'
+                        onClick={dispatchToDo}
+                        value='Добавить'/>
                 </div>
+
             </div>
         </div>
     </div>);

@@ -8,6 +8,15 @@
     height: 50px;
 }
 
+@keyframes move_circle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+
 .btn__add__todo {
     position: absolute;
     width: 100%;
@@ -19,6 +28,7 @@
     color: white;
     transition: all .3s;
 }
+
 .btn__add__todo:after {
     content: '';
     position: absolute;
@@ -28,9 +38,10 @@
     border-radius: 10px;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 0.3s;
 }
+
 .btn__add__todo:before {
     content: '';
     position: absolute;
@@ -40,13 +51,16 @@
     border-radius: 10px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     transition: all 0.3s;
 
 }
+
 .btn__add__todo:hover {
     background: white;
+    animation: move_circle 1s ease;
 }
+
 .btn__add__todo:hover:before, .btn__add__todo:hover:after {
     background: black;
 }

@@ -1,6 +1,7 @@
 .container-modal-add-todo {
     display: none;
 }
+
 .container-modal-add-todo:after {
     content: '';
     position: fixed;
@@ -20,52 +21,57 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
 .form-todo {
     display: flex;
     flex-direction: column;
+    background: #030020;
+    padding: 40px;
 }
+
 .textarea__todo__add {
     display: block;
-    font-family: "Roboto Light";
+    font-family: Jura;
     padding: 20px;
     font-size: 20px;
-    border-radius: 20px;
     border: none;
     resize: none;
     width: 500px;
     height: 300px;
-}
-.btn__add__todo__modal {
-    margin-top: 20px;
-    padding: 20px;
-    font-family: Roboto;
-    font-size: 25px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    background: #DE7D3B;
-    color: black;
-    transition: all .3s;
-    outline: none;
-}
-.textarea__todo__add:focus {
-    outline: none;
-    border: 2px #DE7D3B solid;
-}
-.btn__add__todo__modal:hover {
-    background: #015042;
+    background: transparent;
     color: white;
 }
-.close__add__todo {
-    position: absolute;
-    font-size: 60px;
-    font-weight: bold;
-    color: #5b5858;
-    cursor: pointer;
-    right: -60px;
-    top: -60px;
-    transition: all .3s;
+
+.aside-btn-add-todo {
+    display: flex;
+    justify-content: space-between;
 }
-.close__add__todo:hover {
-    color: #e14040;
+
+.btn__add__todo__modal {
+    padding: 20px;
+    font-family: Jura;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    background: #ff234f;
+    color: white;
+    transition: all .3s;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.textarea__todo__add:focus {
+    outline: none;
+}
+
+.btn__add__todo__modal:hover {
+    background: white;
+    color: black;
+}
+
+.btn_cancel {
+    background: #030020;
+    color: white;
+    border-radius: 5px;
 }

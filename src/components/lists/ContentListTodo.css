@@ -31,6 +31,9 @@
     position: relative;
     transition: all .5s;
 }
+.label__todo:hover {
+    background: white;
+}
 
 .label__todo:before {
     content: '';
