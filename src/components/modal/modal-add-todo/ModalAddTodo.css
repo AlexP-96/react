@@ -1,5 +1,5 @@
 .container-modal-add-todo {
-    display: none;
+
 }
 
 .container-modal-add-todo:after {
@@ -28,18 +28,38 @@
     background: #030020;
     padding: 40px;
 }
-
+.header__add__todo {
+    color: white;
+    font-family: RussoOne;
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.input__header__add__todo {
+    font-size: 20px;
+    font-family: Jura;
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+}
+.input__header__add__todo:focus {
+    outline: none;
+}
 .textarea__todo__add {
     display: block;
     font-family: Jura;
-    padding: 20px;
+    padding: 10px;
     font-size: 20px;
     border: none;
     resize: none;
     width: 500px;
-    height: 300px;
     background: transparent;
     color: white;
+    border-bottom: 2px solid white;
+    margin-bottom: 40px;
 }
 
 .aside-btn-add-todo {
@@ -59,6 +79,7 @@
     outline: none;
     border-radius: 5px;
     text-align: center;
+
 }
 
 .textarea__todo__add:focus {

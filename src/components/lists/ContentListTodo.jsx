@@ -1,9 +1,9 @@
 import './ContentListTodo.css';
 
-import {checkedToDo, getIdToDo, getTextToDo} from "../../actions/actions";
+import {checkedToDo, getIdToDo, getTextToDo, setHeaderToDo} from "../../actions/actions";
 import {useDispatch} from "react-redux";
 
-const ContentListTodo = ({idItem, text, check, wishlist, openWarning}) => {
+const ContentListTodo = ({idItem, header, text, check, wishlist, openWarning, showChange}) => {
 
     const dispatch = useDispatch();
 
@@ -16,6 +16,13 @@ const ContentListTodo = ({idItem, text, check, wishlist, openWarning}) => {
         openWarning(e);
         dispatch(getIdToDo(idItem));
         dispatch(getTextToDo(text));
+    }
+
+    const openModalChange = () => {
+        showChange(true);
+        dispatch(getIdToDo(idItem));
+        dispatch(getTextToDo(text));
+        dispatch(setHeaderToDo(header));
     }
 
     return (<div className="aside-todo-list">
@@ -34,7 +41,13 @@ const ContentListTodo = ({idItem, text, check, wishlist, openWarning}) => {
             ></label>
         </div>
         <div className='aside-text-content-todo'>
+            <p className={`header__text__todo ${check ? 'text_decoration' : ''}`}>{header}</p>
             <p className={`text__todo ${check ? 'text_decoration' : ''}`} >{text}</p>
+        </div>
+        <div className="aside-todo-change">
+            <div className="btn__todo__change"
+                 data-id={idItem}
+                 onClick={openModalChange}></div>
         </div>
         <div className='aside-todo-wishlist'>
             <input id={'check__wishlist__' + idItem}
@@ -43,7 +56,7 @@ const ContentListTodo = ({idItem, text, check, wishlist, openWarning}) => {
                    defaultChecked={wishlist}/>
             <label htmlFor={'check__wishlist__' + idItem}
                    className='label__wishlist'
-                   onClick={() => openModalDelToDo('block')}></label>
+                   onClick={() => openModalDelToDo(true)}></label>
         </div>
     </div>);
 };

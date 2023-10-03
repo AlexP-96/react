@@ -9,7 +9,7 @@ const HeaderToDo = () => {
 
     return (
         <div className='aside-header'>
-            <h1 className="title-todo">ЗАДАЧИ</h1>
+            <h1 className="title-todo">ЗАМЕТКИ</h1>
             <div className="aside-day">
                 <div className="all__task">Всего задач: {quantityToDo}</div>
             </div>

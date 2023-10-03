@@ -6,43 +6,56 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addTodo} from "../../../actions/actions";
 
-const ModalAddTodo = ({showModal, closeModal}) => {
+const ModalAddTodo = ({showModal}) => {
 
     const dispatch = useDispatch();
+    //стэйт для добавления заголовка
+    const [headerContent, setHeaderContent] = useState('');
     //стэйт для добавления вводимого текста в редуктор
     const [content, setContent] = useState('');
+
     //добавление нового поста
     const dispatchToDo = () => {
         if (content === '') {
-            alert('Поле не должно быть пустым')
-        } else {
-            dispatch(addTodo({id: uuid(), check: false, text: content, wishlist: false}))
+            alert('Поле описания не должно быть пустым')
+        } else if (headerContent === '') {
+            dispatch(addTodo({id: uuid(), header: content, check: false, text: '', wishlist: false}))
             setContent('');
-            closeModal();
+            setHeaderContent('');
+            showModal(false);
+        } else {
+            dispatch(addTodo({id: uuid(), header: headerContent, check: false, text: content, wishlist: false}))
+            setContent('');
+            setHeaderContent('');
+            showModal(false);
         }
     }
 
+    const getHeaderContentTodo = e => setHeaderContent(e.target.value)
     //запись вводимых данных в локальный стэйт
-    const getContentTodo = (e) => {
-        setContent(e.target.value)
-    }
+    const getContentTodo = e => setContent(e.target.value)
 
-    return (<div className='container-modal-add-todo'
-                 style={{display: showModal}}>
+    return (<div className='container-modal-add-todo'>
         <div className="modal-add-todo">
             <div className='form-todo'>
-                    <textarea
-                        name="add__todo"
-                        id="add__todo"
-                        className='textarea__todo__add'
-                        onChange={getContentTodo}
-                        value={content}></textarea>
+                <h3 className="header__add__todo">Добавление</h3>
+                <input type="text"
+                       placeholder={"Название"}
+                       value={headerContent}
+                       onChange={getHeaderContentTodo}
+                       className="input__header__add__todo"/>
+                <input
+                    type='text'
+                    className='textarea__todo__add'
+                    placeholder='Описание'
+                    onChange={getContentTodo}
+                    value={content}/>
                 <div className="aside-btn-add-todo">
                     <input
                         className="btn__add__todo__modal btn_cancel"
                         type='button'
                         value='Отмена'
-                        onClick={() => closeModal('none')}/>
+                        onClick={() => showModal(false)}/>
                     <input
                         className="btn__add__todo__modal"
                         type='button'
