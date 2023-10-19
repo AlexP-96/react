@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "header": "Заметка",
+      "check": false,
+      "text": "Первая тестовая заметка",
+      "wishlist": false,
+      "id": 2
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
