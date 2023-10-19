@@ -1,3 +1,4 @@
+export const showToDo = (payload) => ({type: 'SHOW_DATA', payload})
 export const addTodo = (payload) => ({type: 'ADD_TODO', payload});
 export const removeToDo = (id) => ({type: 'REMOVE_TODO', payload: id});
 export const checkedToDo = (id, check) => ({type: "CHECKED_TODO", payload: {id, check}});

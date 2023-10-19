@@ -1,10 +1,8 @@
-import uuid from "react-uuid";
-
 import './ModalAddTodo.css';
 
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {addTodo} from "../../../actions/actions";
+import {postTodos} from "../../../asyncActions/todos";
 
 const ModalAddTodo = ({showModal}) => {
 
@@ -19,12 +17,14 @@ const ModalAddTodo = ({showModal}) => {
         if (content === '') {
             alert('Поле описания не должно быть пустым')
         } else if (headerContent === '') {
-            dispatch(addTodo({id: uuid(), header: content, check: false, text: '', wishlist: false}))
+            dispatch(postTodos({header: content, check: false, text: '', wishlist: false}));
             setContent('');
             setHeaderContent('');
             showModal(false);
         } else {
-            dispatch(addTodo({id: uuid(), header: headerContent, check: false, text: content, wishlist: false}))
+            dispatch(postTodos({
+                header: headerContent, check: false, text: content, wishlist: false
+            }));
             setContent('');
             setHeaderContent('');
             showModal(false);

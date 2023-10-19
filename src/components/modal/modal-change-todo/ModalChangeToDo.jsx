@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 import './ModalChangeToDo.css';
 import {useDispatch, useSelector} from "react-redux";
-import {changeToDo, setHeaderToDo, getTextToDo} from "../../../actions/actions";
+import {removeTodo} from "../../../asyncActions/todos";
 
 const dataSelector = (state) => state.dataTodo;
 
@@ -23,7 +23,7 @@ const ModalChangeToDo = ({showChange}) => {
     }
 
     const modifyTodo = () => {
-        dispatch(changeToDo(dataToDo.id, valueHeader, valueText));
+        dispatch(removeTodo(dataToDo.id, valueHeader, valueText))
         showChange(false);
     }
 

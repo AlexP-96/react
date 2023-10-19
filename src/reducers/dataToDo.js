@@ -7,15 +7,14 @@ const SET_TEXT = 'SET_TEXT';
 const CHANGE_TODO = 'CHANGE_TODO';
 const SET_HEADER = 'SET_HEADER';
 
+
 const dataToDo = (state = {data: [], id: '', text: ''}, action) => {
 
     switch (action.type) {
         case SHOW_DATA:
             return {
                 ...state,
-                data: [
-                    {id: '999', check: false, header: 'Загловок', text: 'Первая тестовая запись', wishlist: false}
-                ]
+                data: action.payload
             }
         case ADD_TODO:
             return {
@@ -53,7 +52,11 @@ const dataToDo = (state = {data: [], id: '', text: ''}, action) => {
         case CHANGE_TODO:
             return {
                 ...state,
-                data: state.data.map(item => item.id === action.payload.id ? {id: action.payload.id, header: action.payload.header, text: action.payload.text} : {...item})
+                data: state.data.map(item => item.id === action.payload.id ? {
+                    id: action.payload.id,
+                    header: action.payload.header,
+                    text: action.payload.text
+                } : {...item})
             }
         default:
             return state;

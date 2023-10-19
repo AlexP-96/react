@@ -1,6 +1,6 @@
 import './WarningDel.css';
 import {useDispatch, useSelector} from "react-redux";
-import {removeToDo} from "../../../actions/actions";
+import {deleteTodoServer} from "../../../asyncActions/todos";
 
 const dataSelector = (state) => state.dataTodo;
 
@@ -14,7 +14,7 @@ const WarningDel = ({showWarning}) => {
     const setText = useSelector(dataSelector).text;
     //удаление тудушки из списка
     const deleteTodo = (e) => {
-        dispatch(removeToDo(e.target.dataset.id));
+        dispatch(deleteTodoServer(Number(e.target.dataset.id)))
         showWarning(false);
     }
 

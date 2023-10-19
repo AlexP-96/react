@@ -1,7 +1,8 @@
 import './ContentListTodo.css';
 
-import {checkedToDo, getIdToDo, getTextToDo, setHeaderToDo} from "../../actions/actions";
+import {getIdToDo, getTextToDo, setHeaderToDo} from "../../actions/actions";
 import {useDispatch} from "react-redux";
+import {putChangeCheckedTodo} from "../../asyncActions/todos";
 
 const ContentListTodo = ({idItem, header, text, check, wishlist, openWarning, showChange}) => {
 
@@ -9,7 +10,7 @@ const ContentListTodo = ({idItem, header, text, check, wishlist, openWarning, sh
 
     //клик по задаче для перевода задачи в состояние тру или фолс
     const checkedTodoDispatch = (e) => {
-        dispatch(checkedToDo(idItem, e.target.checked));
+        dispatch(putChangeCheckedTodo(idItem, e.target.checked))
     }
 
     const openModalDelToDo = (e) => {

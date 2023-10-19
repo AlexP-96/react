@@ -12,18 +12,22 @@ import './null.css';
 import './App.css';
 
 import {useEffect, useState} from "react";
+import {fetchTodos} from "./asyncActions/todos";
+import HeaderLogIn from "./components/header/HeaderLogIn";
+import MainWindow from "./components/main-window/MainWindow";
+import ModalLogin from "./components/modal/modal-login/ModalLogin";
 
-const dataSelector = (state) => state.dataTodo;
+export const dataSelector = (state) => state.dataTodo;
 
 function App() {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch({type: 'SHOW_DATA'})
-    }, [])
-
     const dataToDo = useSelector(dataSelector).data;
+
+    useEffect(() => {
+        dispatch(fetchTodos({type: 'SHOW_DATA'}))
+    }, []);
 
     //стей на показ модального окна
     const [showModal, setShowModal] = useState(false);
@@ -31,6 +35,8 @@ function App() {
     const [showWarning, setShowWarning] = useState(false);
     //стэйт на показ модального окна изменения записи
     const [showModalChange, setModalChange] = useState(false);
+
+    const [showContentLogin, setContentLogin] = useState(false);
 
     //создание элементов туду
     const createTodo = (data) => {
@@ -56,29 +62,44 @@ function App() {
     //открытие закрытие-закрытие модалки изменения записи
     const openModalChange = e => setModalChange(e);
 
+    const openModalLogin = e => setContentLogin(e);
+
     return (<div className="App">
         <div className="container">
             <div className="header">
                 <DateTodo/>
+                {/*<HeaderLogIn*/}
+                    showModalLogin={openModalLogin}
+                />
                 <HeaderToDo/>
             </div>
-            <div className="aside-content-todo">
-                {createTodo(dataToDo)}
-            </div>
+            {/*{!showContentLogin && <MainWindow/>}*/}
+            {/*{showContentLogin &&*/}
+                <div className="aside-content-todo">
+                    {createTodo(dataToDo)}
+                </div>
+            {/*}*/}
 
             <BtnAddTodo showModal={openModalAddTodo}/>
 
-
-            {/*модалки            */}
-            {showModal && <ModalAddTodo
+            {/*модалки*/}
+            {showModal &&
+                <ModalAddTodo
                 showModal={openModalAddTodo}
             />}
-            {showWarning && <WarningDel
+            {showWarning &&
+                <WarningDel
                 showWarning={openModalWarning}
             />}
-            {showModalChange && <ModalChangeToDo
+            {showModalChange &&
+                <ModalChangeToDo
                 showChange={openModalChange}
             />}
+            {/*{showContentLogin &&*/}
+            {/*    <ModalLogin*/}
+            {/*    showModalLogin={openModalLogin}*/}
+            {/*    />*/}
+            {/*}*/}
 
         </div>
     </div>);

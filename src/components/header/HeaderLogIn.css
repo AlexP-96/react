@@ -1,0 +1,36 @@
+.aside-header-login {
+    display: flex;
+    font-family: Jura;
+    justify-content: space-between;
+    padding: 10px;
+}
+.aside-btns-login {
+    display: flex;
+    gap: 10px;
+}
+.btn__login {
+    background: #ff234f;
+    border: none;
+    font-family: Jura;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.login_signup {
+    background: white;
+    color: black;
+    transition: all .3s;
+}
+.login_signup:hover {
+    background: #ff234f;
+    color: white;
+}
+.login_registration {
+    transition: all .3s;
+}
+
+.login_registration:hover {
+    background: white;
+    color: black;
+}
